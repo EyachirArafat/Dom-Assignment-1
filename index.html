@@ -10,177 +10,45 @@
     <link rel="stylesheet" href="tailwind.css">
     <title>To-Do List DOM Project</title>
   </head>
+  
   <body class="bg-gray-800 text-white font-hand">
-
     <section class="container-fluid mx-auto flex justify-center">
       <div class="mt-16 text-center">
-        <div class=" w-full">
+        <div class="w-full">
           <h1 class="text-center font-bold text-4xl underline md:mb-8">TO-DO LIST</h1>
           <div class="flex gap-6 md:text-xl pt-4 mb-6 justify-center">
-            <p>0 Total</p>
-            <p>0 Completed</p>
-            <p>0 Pending</p>
+            <p id="totalTask">0 Total</p>
+            <p id="completedTask">0 Completed</p>
+            <p id="pendingTask">0 Pending</p>
           </div>
 
-          <form action="" class="flex items-center ">
+          <form action="" class="flex items-center">
             <input type="text" placeholder="Add your task ..." id="inputBox" class="md:w-96 w-64 p-4 text-black outline-none border-none shadow-neutral-50 focus:shadow-lg rounded-s-full">
             <i class="fa-solid fa-pen bg-slate-300 text-black p-5 cursor-pointer hover:bg-slate-600 hover:text-slate-200 rounded-e-full" id="addBtn"></i>
           </form>
         </div>
       </div>
     </section>
-    
-    <section class="container-fluid mx-16 border mt-10 rounded-lg overflow-y-auto bg-slate-700 h-96">
-      <div class="">
-        
 
-        <div class="border-b w-full bg-slate-500">
-            <div class="text-white flex justify-between pt-6  p-3">
-              <p class="text-xl font-bold">Number</p>
-              <p class="text-xl font-bold">Task</p>
-              <div class="flex justify-between gap-8">
-                
-                <p class="hidden md:block text-xl font-bold">Date</p>
-                <p class="text-xl font-bold">Status</p>
-                <p class="text-xl font-bold">Delete</p>
-              </div>
+    <section class="container-fluid mx-4 border mt-10 rounded-lg overflow-y-auto overflow-x-auto bg-slate-700 h-96 task-list">
+        <div class="text-white grid grid-cols-12 pt-6 p-3 min-w-[700px] w-full sticky top-0 border-b bg-slate-500">
+          <p class="text-xl font-bold col-span-1">Number</p>
+          <p class="text-xl font-bold text-center col-span-6">Task</p>
+          <div class="col-span-5">
+            <div class="grid grid-cols-12">
+              <p class="hidden md:block text-xl font-bold md:col-span-3 text-center">Date</p>
+              <p class="text-xl font-bold md:col-span-3 col-span-4 text-center">Status</p>
+              <p class="text-xl font-bold md:col-span-3 col-span-4 text-center">Edit</p>
+              <p class="text-xl font-bold md:col-span-3 col-span-4 text-center">Actions</p>
             </div>
           </div>
+        </div>
 
-          <div class="hover:bg-slate-600 w-full mt-4 p-">
-            <div class="text-white flex justify-between p-3">
-              <p>Number</p>
-              <p>Task</p>
-              <div class="flex justify-between gap-8">
-                
-                <p>Date</p>
-                <p>Status</p>
-                <p>Delete</p>
-              </div>
-            </div>
-          </div>
+        <div id="taskList">
           
-          <div class="hover:bg-slate-600 w-full mt-4 p-">
-            <div class="text-white flex justify-between p-3">
-              <p>Number</p>
-              <p>Task</p>
-              <div class="flex justify-between gap-8">
-                
-                <p>Date</p>
-                <p>Status</p>
-                <p>Delete</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="hover:bg-slate-600 w-full mt-4 p-">
-            <div class="text-white flex justify-between p-3">
-              <p>Number</p>
-              <p>Task</p>
-              <div class="flex justify-between gap-8">
-                
-                <p>Date</p>
-                <p>Status</p>
-                <p>Delete</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="hover:bg-slate-600 w-full mt-4 p-">
-            <div class="text-white flex justify-between p-3">
-              <p>Number</p>
-              <p>Task</p>
-              <div class="flex justify-between gap-8">
-                
-                <p>Date</p>
-                <p>Status</p>
-                <p>Delete</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="hover:bg-slate-600 w-full mt-4 p-">
-            <div class="text-white flex justify-between p-3">
-              <p>Number</p>
-              <p>Task</p>
-              <div class="flex justify-between gap-8">
-                
-                <p>Date</p>
-                <p>Status</p>
-                <p>Delete</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="hover:bg-slate-600 w-full mt-4 p-">
-            <div class="text-white flex justify-between p-3">
-              <p>Number</p>
-              <p>Task</p>
-              <div class="flex justify-between gap-8">
-                
-                <p>Date</p>
-                <p>Status</p>
-                <p>Delete</p>
-              </div>
-            </div>
-          </div>
-          <div class="hover:bg-slate-600 w-full mt-4 p-">
-            <div class="text-white flex justify-between p-3">
-              <p>Number</p>
-              <p>Task</p>
-              <div class="flex justify-between gap-8">
-                
-                <p class="md:visible">Date</p>
-                <p>Status</p>
-                <p>Delete</p>
-              </div>
-            </div>
-          </div>
-          <div class="hover:bg-slate-600 w-full mt-4 p-">
-            <div class="text-white flex justify-between p-3">
-              <p>Number</p>
-              <p>Task</p>
-              <div class="flex justify-between gap-8">
-                
-                <p>Date</p>
-                <p>Status</p>
-                <p>Delete</p>
-              </div>
-            </div>
-          </div>
-
-
-
-
-
-
-
-
-
-
-      </div>
+        </div>
     </section>
 
-
-
-
-
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <script src="script.js" type="module"></script>
-  </body>
+</body>
 </html>
