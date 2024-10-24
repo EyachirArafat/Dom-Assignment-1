@@ -4,3 +4,9 @@
 
 
 
+@layer base {
+  .line-through-red {
+    @apply line-through;
+    color: red;
+  }
+}

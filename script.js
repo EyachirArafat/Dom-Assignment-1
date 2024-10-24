@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         statusP.innerHTML = "Completed";
         statusP.classList.add("text-green-500");
         statusP.classList.remove("text-yellow-500");
-        taskP.classList.add("line-through");
+        taskP.classList.add("line-through-red");
         editBtn.classList.add("fa-ban", "text-red-500", "cursor-not-allowed");
         editBtn.classList.remove("fa-pen-to-square", "text-blue-500", "hover:text-blue-700", "cursor-pointer");
 
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         statusP.innerHTML = "Pending"
         statusP.classList.remove("text-green-500");
         statusP.classList.add("text-yellow-500");
-        taskP.classList.remove("line-through");
+        taskP.classList.remove("line-through-red");
         editBtn.classList.remove("fa-ban", "text-red-500", "cursor-not-allowed");
         editBtn.classList.add("fa-pen-to-square", "text-blue-500", "hover:text-blue-700", "cursor-pointer");
 
