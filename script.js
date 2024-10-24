@@ -23,31 +23,45 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   */
 
+  let taskCount = 0;
+  let completedCount = 0;
+  let pendingCount = 0;
+
+  function updateCounts(){
+    const totalTask = document.querySelector("#totalTask");
+    const completedTask = document.querySelector("#completedTask");
+    const pendingTask = document.querySelector("#pendingTask");
+
+    totalTask.innerHTML = `${taskCount} Total`
+    completedTask.innerHTML = `${completedCount} Completed`
+    pendingTask.innerHTML = `${pendingCount} Pending`
+
+  }
+
   
 
 
   function addTask(task){
-
+    taskCount++;
+    pendingCount++;
+    updateCounts();
 
 
     // Create task item main div
     let div = document.createElement("div");
     div.classList.add("grid", "grid-cols-12", "pt-6", "p-3", "min-w-[800px]", "hover:bg-slate-600", "text-white", "w-full", "border-b");
 
-    div.addEventListener("click", () => {
-      div.classList.toggle("bg-slate-800"); // Toggle background color
-    });
-
     
     // Create task number
     let numberP = document.createElement("p");
     numberP.classList.add("text-xl", "col-span-1");
     numberP.innerHTML = taskList.children.length + 1;
+    numberP.innerHTML = taskCount;
     div.appendChild(numberP);
 
     // Create task text
     let taskP = document.createElement("p");
-    taskP.classList.add("text-xl", "col-span-6", "text-center", "cursor-pointer");
+    taskP.classList.add("text-xl", "col-span-5", "text-center", "cursor-pointer");
     taskP.innerHTML = task;
     div.appendChild(taskP);
 
@@ -55,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Child div for div & parent div for Date, Status, Edit, Actions
     let divC1 = document.createElement("div");
-    divC1.classList.add("col-span-5");
+    divC1.classList.add("col-span-6");
     div.appendChild(divC1); 
 
     
@@ -85,6 +99,10 @@ document.addEventListener('DOMContentLoaded', () => {
         taskP.classList.add("line-through");
         editBtn.classList.add("fa-ban", "text-red-500", "cursor-not-allowed");
         editBtn.classList.remove("fa-pen-to-square", "text-blue-500", "hover:text-blue-700", "cursor-pointer");
+
+        pendingCount--;
+        completedCount++;
+
       }else{
         statusP.innerHTML = "Pending"
         statusP.classList.remove("text-green-500");
@@ -92,7 +110,11 @@ document.addEventListener('DOMContentLoaded', () => {
         taskP.classList.remove("line-through");
         editBtn.classList.remove("fa-ban", "text-red-500", "cursor-not-allowed");
         editBtn.classList.add("fa-pen-to-square", "text-blue-500", "hover:text-blue-700", "cursor-pointer");
+
+        pendingCount++
+        completedCount--
       }
+      updateCounts();
     })
 
 
@@ -127,6 +149,14 @@ document.addEventListener('DOMContentLoaded', () => {
     actionsP.addEventListener("click", (event)=>{
       event.stopPropagation();
       div.remove();
+
+      if(statusP.innerHTML === "Pending"){
+        pendingCount--;
+      }else{
+        completedCount--;
+      }
+      taskCount--;
+      updateCounts();
     });
     divC2.appendChild(actionsP);
 
