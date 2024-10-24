@@ -38,16 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   }
 
-
-  /*
-    function renumberTasks() {
-    const taskNumbers = taskList.querySelectorAll('.task-number');
-    taskNumbers.forEach((element, index) => {
-      element.textContent = index + 1; // Renumber tasks starting from 1
-    });
-  }
-  */
-
   function renumberTasks(){
     const taskNumbers = taskList.querySelectorAll('.task-number');
     taskNumbers.forEach((element, index)=>{
@@ -55,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
-  
   function addTask(task){
     taskCount++;
     pendingCount++;
@@ -133,7 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
 
-
     // Edit button using Font Awesome icon
     let editBtn = document.createElement("i");
     editBtn.className = 'fa-solid fa-pen-to-square text-blue-500 hover:text-blue-700 ml-2 cursor-pointer text-xl col-span-3 text-center';
@@ -167,12 +155,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     divC2.appendChild(actionsP);
 
-
     // Finally, append the task div into the taskList container
     taskList.appendChild(div);
   }
 
-  
   // Add event listener for Enter key
   inputBox.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
@@ -195,4 +181,3 @@ document.addEventListener('DOMContentLoaded', () => {
     inputBox.value = "";
   });
 });
-
