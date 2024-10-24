@@ -34,8 +34,9 @@ addBtn.addEventListener("click", () => {
 
   // Create task item wrapper
   let div = document.createElement("div");
-  div.classList.add("grid", "grid-cols-12", "pt-6", "p-3", "min-w-[700px]", "hover:bg-slate-600", "text-white", "w-full", "border-b");
+  div.classList.add("grid", "grid-cols-12", "pt-6", "p-3", "min-w-[800px]", "hover:bg-slate-600", "text-white", "w-full", "border-b");
 
+  
   // Create task number
   let numberP = document.createElement("p");
   numberP.classList.add("text-xl", "col-span-1");
@@ -49,10 +50,12 @@ addBtn.addEventListener("click", () => {
   div.appendChild(taskP);
 
 
+
   // Child div for div & parent div for Date, Status, Edit, Actions
   let divC1 = document.createElement("div");
   divC1.classList.add("col-span-5");
   div.appendChild(divC1); 
+
   
   let divC2 = document.createElement("div");
   divC2.classList.add("grid", "grid-cols-12");
@@ -60,7 +63,7 @@ addBtn.addEventListener("click", () => {
 
   // Create task date
   let dateP = document.createElement("p");
-  dateP.classList.add("hidden", "md:block", "text-xl", "md:col-span-3", "text-center");
+  dateP.classList.add("pr-20", "text-xl", "col-span-3", "text-center");
   dateP.innerHTML = new Date().toLocaleDateString();
   divC2.appendChild(dateP);
 
@@ -68,11 +71,11 @@ addBtn.addEventListener("click", () => {
   
   // Create task status & its toggle
   let statusP = document.createElement("p");
-  statusP.classList.add("text-xl", "md:col-span-3", "col-span-4", "text-center", "text-yellow-500");
+  statusP.classList.add("text-xl", "col-span-3", "text-center", "text-yellow-500");
   statusP.innerHTML = "Pending";
   divC2.appendChild(statusP);
 
-  div.addEventListener("click", ()=>{
+  taskP.addEventListener("click", ()=>{
     if(statusP.innerHTML === "Pending"){
       statusP.innerHTML = "Completed";
       statusP.classList.add("text-green-500");
@@ -92,7 +95,7 @@ addBtn.addEventListener("click", () => {
 
   // Edit button using Font Awesome icon
   let editBtn = document.createElement("i");
-  editBtn.className = 'fa-solid fa-pen-to-square text-blue-500 hover:text-blue-700 ml-2 cursor-pointer text-xl md:col-span-3 col-span-4 text-center';
+  editBtn.className = 'fa-solid fa-pen-to-square text-blue-500 hover:text-blue-700 ml-2 cursor-pointer text-xl col-span-3 text-center';
 
   editBtn.addEventListener("click", (event)=>{
     event.stopPropagation();
@@ -115,8 +118,13 @@ addBtn.addEventListener("click", () => {
 
   // Create actions button
   let actionsP = document.createElement("p");
-  actionsP.classList.add("text-xl", "md:col-span-3", "col-span-4", "text-center");
-  actionsP.innerHTML = "Actions";
+  actionsP.className = 'fa-solid fa-trash text-xl col-span-3 text-center text-red-500';
+
+  actionsP.addEventListener("click", (event)=>{
+    event.stopPropagation();
+    div.remove();
+  });
+
   divC2.appendChild(actionsP);
 
 
