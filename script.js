@@ -38,9 +38,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   }
 
+
+  /*
+    function renumberTasks() {
+    const taskNumbers = taskList.querySelectorAll('.task-number');
+    taskNumbers.forEach((element, index) => {
+      element.textContent = index + 1; // Renumber tasks starting from 1
+    });
+  }
+  */
+
+  function renumberTasks(){
+    const taskNumbers = taskList.querySelectorAll('.task-number');
+    taskNumbers.forEach((element, index)=>{
+      element.innerHTML = index + 1;
+    })
+  }
+
   
-
-
   function addTask(task){
     taskCount++;
     pendingCount++;
@@ -54,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Create task number
     let numberP = document.createElement("p");
-    numberP.classList.add("text-xl", "col-span-1");
+    numberP.classList.add("text-xl", "col-span-1", "task-number");
     numberP.innerHTML = taskList.children.length + 1;
     numberP.innerHTML = taskCount;
     div.appendChild(numberP);
@@ -132,15 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     divC2.appendChild(editBtn);
 
-    /*
-    // Create task edit 
-    let editP = document.createElement("p");
-    editP.classList.add("text-xl", "md:col-span-3", "col-span-4", "text-center");
-    editP.innerHTML = "Edit";
-    divC2.appendChild(editP);
-    */
-
-
 
     // Create actions button
     let actionsP = document.createElement("p");
@@ -156,6 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
         completedCount--;
       }
       taskCount--;
+      renumberTasks();
       updateCounts();
     });
     divC2.appendChild(actionsP);
