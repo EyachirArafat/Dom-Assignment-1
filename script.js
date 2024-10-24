@@ -65,18 +65,55 @@ addBtn.addEventListener("click", () => {
   divC2.appendChild(dateP);
 
 
-  // Create task status
+  
+  // Create task status & its toggle
   let statusP = document.createElement("p");
-  statusP.classList.add("text-xl", "md:col-span-3", "col-span-4", "text-center");
+  statusP.classList.add("text-xl", "md:col-span-3", "col-span-4", "text-center", "text-yellow-500");
   statusP.innerHTML = "Pending";
   divC2.appendChild(statusP);
 
-  // Create task edit and actions
+  div.addEventListener("click", ()=>{
+    if(statusP.innerHTML === "Pending"){
+      statusP.innerHTML = "Completed";
+      statusP.classList.add("text-green-500");
+      statusP.classList.remove("text-yellow-500");
+      taskP.classList.add("line-through");
+      editBtn.classList.add("line-through");
+    }else{
+      statusP.innerHTML = "Pending"
+      statusP.classList.remove("text-green-500");
+      statusP.classList.add("text-yellow-500");
+      taskP.classList.remove("line-through");
+      editBtn.classList.remove("line-through");
+    }
+  })
+
+
+
+  // Edit button using Font Awesome icon
+  let editBtn = document.createElement("i");
+  editBtn.className = 'fa-solid fa-pen-to-square text-blue-500 hover:text-blue-700 ml-2 cursor-pointer text-xl md:col-span-3 col-span-4 text-center';
+
+  editBtn.addEventListener("click", (event)=>{
+    event.stopPropagation();
+    const newTask = prompt("Edit your task", inputText);
+    if(newTask){
+      taskP.textContent = newTask;
+    };
+  })
+  divC2.appendChild(editBtn);
+
+  /*
+  // Create task edit 
   let editP = document.createElement("p");
   editP.classList.add("text-xl", "md:col-span-3", "col-span-4", "text-center");
   editP.innerHTML = "Edit";
   divC2.appendChild(editP);
+  */
 
+
+
+  // Create actions button
   let actionsP = document.createElement("p");
   actionsP.classList.add("text-xl", "md:col-span-3", "col-span-4", "text-center");
   actionsP.innerHTML = "Actions";
@@ -96,29 +133,6 @@ addBtn.addEventListener("click", () => {
 
 
 
-
-
-
-
-
-
-
-
-/*
-text-white grid grid-cols-12 pt-6 p-3 min-w-[700px] w-full sticky top-0 border-b bg-slate-500
-
-<p class="text-xl font-bold col-span-1">Number</p>
-          <p class="text-xl font-bold text-center col-span-6">Task</p>
-          <div class="col-span-5">
-            <div class="grid grid-cols-12">
-              <p class="hidden md:block text-xl font-bold md:col-span-3 text-center">Date</p>
-              <p class="text-xl font-bold md:col-span-3 col-span-4 text-center">Status</p>
-              <p class="text-xl font-bold md:col-span-3 col-span-4 text-center">Edit</p>
-              <p class="text-xl font-bold md:col-span-3 col-span-4 text-center">Actions</p>
-            </div>
-          </div>
-
-*/
 
 
 
